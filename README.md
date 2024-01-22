@@ -1,79 +1,95 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# RNSwitch
 
-# Getting Started
+<br>
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+![for android](src/assets/androidI.gif)
 
-## Step 1: Start the Metro Server
+<br>
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+#### RNSwitch is a customizable React Native component designed to implement a horizontal switch with multiple tabs. It allows users to scroll through tabs and select their desired option. The component provides flexibility in terms of styling and customization to seamlessly integrate with your React Native applications.
 
-To start Metro, run the following command from the _root_ of your React Native project:
+## Installation
 
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
+```
+npm install rns-switch
 ```
 
-## Step 2: Start your Application
+## Usage
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+```
+import React from 'react';
+import { View } from 'react-native';
+import RNSwitch from 'rns-switch';
 
-### For Android
+const YourComponent = () => {
+  const options = [
+    { key: '1', value: 'Tab 1' },
+    { key: '2', value: 'Tab 2' },
+    // Add more tabs as needed
+  ];
 
-```bash
-# using npm
-npm run android
+  const handleTabPress = (selectedTab) => {
+    // Your custom logic when a tab is pressed
+    console.log('Selected Tab:', selectedTab);
+  };
 
-# OR using Yarn
-yarn android
+  return (
+    <View>
+      <RNSwitch
+        option={options}
+        onPress={handleTabPress}
+        selectedColor="#2E5894"
+        unSelectedColor="#0A1D56"
+        selectedTextColor="#fff"
+        unSelectedTextColor="#A9A9A9"
+      />
+      {/* Your other components or views */}
+    </View>
+  );
+};
+
+export default YourComponent;
+
 ```
 
-### For iOS
+## Props
 
-```bash
-# using npm
-npm run ios
+- option (Array, required): An array of objects representing each tab. Each object should have a key and value property.
 
-# OR using Yarn
-yarn ios
+- onPress (Function, required): Callback function invoked when a tab is pressed. It receives the selected tab as an argument.
+
+- selectedColor (String): Background color of the selected tab.
+
+- unSelectedColor (String): Background color of the unselected tabs.
+
+- selectedTextColor (String): Text color of the selected tab.
+
+- unSelectedTextColor (String): Text color of the unselected tabs.
+
+- containerStyle (Object): Additional styles for the tab container.
+
+- textStyle (Object): Additional styles for the text inside each tab.
+
+## Example
+
+> For a complete example, refer to the usage section above.
+
+### Styling
+
+#### Customize the appearance of the tabs by providing styles through the selectedColor, unSelectedColor, selectedTextColor, unSelectedTextColor, containerStyle, and textStyle props.
+
+```
+<RNSwitch
+  option={options}
+  onPress={handleTabPress}
+  selectedColor="#2E5894"
+  unSelectedColor="#0A1D56"
+  selectedTextColor="#fff"
+  unSelectedTextColor="#A9A9A9"
+  containerStyle={{ borderRadius: 10 }}
+  textStyle={{ fontSize: 18 }}
+/>
+
 ```
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+#### Feel free to adjust the values according to your application's design.
