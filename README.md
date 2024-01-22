@@ -1,10 +1,8 @@
 # RNSwitch
 
-<br>
-
-![for android](src/assets/androidI.gif)
-
-<br>
+| iOS                            | Android                                 |
+| ------------------------------ | --------------------------------------- |
+| ![for iOS](src/assets/ios.gif) | ![for Android](src/assets/androidI.gif) |
 
 #### RNSwitch is a customizable React Native component designed to implement a horizontal switch with multiple tabs. It allows users to scroll through tabs and select their desired option. The component provides flexibility in terms of styling and customization to seamlessly integrate with your React Native applications.
 

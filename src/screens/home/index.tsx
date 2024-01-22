@@ -1,4 +1,4 @@
-import {StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, View} from 'react-native';
 import React from 'react';
 import RNSwitch from '../../components/switch';
 
@@ -15,7 +15,7 @@ const HomeScreen = () => {
     console.log('hello', tab);
   };
   return (
-    <View>
+    <View style={styles.root}>
       <RNSwitch
         option={tab}
         onPress={tabSelectHandler}
@@ -65,6 +65,10 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    paddingVertical: Platform.OS || 'ios' ? 50 : 10,
+  },
   container: {
     borderWidth: 1,
     borderColor: '#0A1D56',
