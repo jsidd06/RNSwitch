@@ -4,20 +4,21 @@ import React, {useState} from 'react';
 const RNSwitch = props => {
   const [selectTab, setSelectedTab] = useState(0);
   const [selectedTextColor, setSelectedTextColor] = useState(0);
+
   return (
     <View style={styles.root}>
       <ScrollView
         style={styles.subRootContainer}
         horizontal={true}
         showsHorizontalScrollIndicator={false}>
-        {props?.option?.map((tab, index) => (
+        {props?.options?.map((item, index) => (
           <Pressable
             onPress={() => {
-              props.onPress(tab),
-                setSelectedTab(index),
-                setSelectedTextColor(index);
+              props.onPress(item);
+              setSelectedTab(index);
+              setSelectedTextColor(index);
             }}
-            key={tab.key}
+            key={item.key}
             style={[
               styles.container,
               props.containerStyle,
@@ -29,20 +30,24 @@ const RNSwitch = props => {
                       : props.unSelectedColor,
                 },
             ]}>
-            <Text
-              style={[
-                styles.textStyle,
-                props.textStyle,
-                props.selectedTextColor &&
-                  props.unSelectedTextColor && {
-                    color:
-                      index === selectedTextColor
-                        ? props.selectedTextColor
-                        : props.unSelectedTextColor,
-                  },
-              ]}>
-              {tab.value}
-            </Text>
+            {props.renderItem ? (
+              props.renderItem(item)
+            ) : (
+              <Text
+                style={[
+                  styles.textStyle,
+                  props.textStyle,
+                  props.selectedTextColor &&
+                    props.unSelectedTextColor && {
+                      color:
+                        index === selectedTextColor
+                          ? props.selectedTextColor
+                          : props.unSelectedTextColor,
+                    },
+                ]}>
+                {item.value}
+              </Text>
+            )}
           </Pressable>
         ))}
       </ScrollView>

@@ -1,4 +1,4 @@
-import {Platform, StyleSheet, View} from 'react-native';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import RNSwitch from '../../components/switch';
 
@@ -10,6 +10,12 @@ const tab = [
   {key: '5', value: 'Tab 5'},
 ];
 
+const data = [
+  {key: '1', label: 'Option 1'},
+  {key: '2', label: 'Option 2'},
+  {key: '3', label: 'Option 3'},
+];
+
 const HomeScreen = () => {
   const tabSelectHandler = tab => {
     console.log('hello', tab);
@@ -17,17 +23,36 @@ const HomeScreen = () => {
   return (
     <View style={styles.root}>
       <RNSwitch
-        option={tab}
+        options={tab}
         onPress={tabSelectHandler}
         selectedColor="#FE7A36"
         unSelectedColor="#280274"
       />
       <RNSwitch
-        option={tab}
+        options={tab}
         onPress={tabSelectHandler}
         selectedColor="#F3B95F"
         unSelectedColor="#492E87"
+        renderItem={item => (
+          <View>
+            <Text style={{color: '#fff'}}>{item.value}</Text>
+          </View>
+        )}
       />
+      <RNSwitch
+        options={data}
+        renderItem={item => (
+          <View>
+            <Text style={{color: '#fff'}}>{item.label}</Text>
+          </View>
+        )}
+        selectedColor="#F3B95F"
+        unSelectedColor="#492E87"
+        selectedTextColor="#fff"
+        unSelectedTextColor="#000"
+        onPress={tabSelectHandler}
+      />
+
       <RNSwitch
         option={tab}
         onPress={tabSelectHandler}
@@ -39,7 +64,7 @@ const HomeScreen = () => {
         unSelectedTextColor="#000"
       />
       <RNSwitch
-        option={tab}
+        options={tab}
         onPress={tabSelectHandler}
         containerStyle={styles.container2}
         textStyle={styles.textStyle}
@@ -49,7 +74,7 @@ const HomeScreen = () => {
         unSelectedTextColor="#000"
       />
       <RNSwitch
-        option={tab}
+        options={tab}
         onPress={tabSelectHandler}
         containerStyle={styles.container3}
         textStyle={styles.textStyle}
