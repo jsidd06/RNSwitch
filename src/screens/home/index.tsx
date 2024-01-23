@@ -1,6 +1,6 @@
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
-import RNSwitch from '../../components/switch';
+import RNSwitchTabs from 'rn-switch-tabs';
 
 const tab = [
   {key: '1', value: 'Tab 1'},
@@ -22,13 +22,7 @@ const HomeScreen = () => {
   };
   return (
     <View style={styles.root}>
-      <RNSwitch
-        options={tab}
-        onPress={tabSelectHandler}
-        selectedColor="#FE7A36"
-        unSelectedColor="#280274"
-      />
-      <RNSwitch
+      <RNSwitchTabs
         options={tab}
         onPress={tabSelectHandler}
         selectedColor="#F3B95F"
@@ -38,50 +32,6 @@ const HomeScreen = () => {
             <Text style={{color: '#fff'}}>{item.value}</Text>
           </View>
         )}
-      />
-      <RNSwitch
-        options={data}
-        renderItem={item => (
-          <View>
-            <Text style={{color: '#fff'}}>{item.label}</Text>
-          </View>
-        )}
-        selectedColor="#F3B95F"
-        unSelectedColor="#492E87"
-        selectedTextColor="#fff"
-        unSelectedTextColor="#000"
-        onPress={tabSelectHandler}
-      />
-
-      <RNSwitch
-        option={tab}
-        onPress={tabSelectHandler}
-        containerStyle={styles.container}
-        textStyle={styles.textStyle}
-        selectedColor="#0A1D56"
-        unSelectedColor="#fff"
-        selectedTextColor="#fff"
-        unSelectedTextColor="#000"
-      />
-      <RNSwitch
-        options={tab}
-        onPress={tabSelectHandler}
-        containerStyle={styles.container2}
-        textStyle={styles.textStyle}
-        selectedColor="#FF6868"
-        unSelectedColor="#fff"
-        selectedTextColor="#fff"
-        unSelectedTextColor="#000"
-      />
-      <RNSwitch
-        options={tab}
-        onPress={tabSelectHandler}
-        containerStyle={styles.container3}
-        textStyle={styles.textStyle}
-        selectedColor="#3C0753"
-        unSelectedColor="#fff"
-        selectedTextColor="#fff"
-        unSelectedTextColor="#000"
       />
     </View>
   );
