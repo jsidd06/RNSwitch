@@ -1,48 +1,49 @@
-# RNSwitch
+# RNSwitchTabs
 
 | iOS                            | Android                                 |
 | ------------------------------ | --------------------------------------- |
 | ![for iOS](src/assets/ios.gif) | ![for Android](src/assets/androidI.gif) |
 
-#### RNSwitch is a customizable React Native component designed to implement a horizontal switch with multiple tabs. It allows users to scroll through tabs and select their desired option. The component provides flexibility in terms of styling and customization to seamlessly integrate with your React Native applications.
+#### RNSwitchTabs is a React Native component that provides a customizable switch with multiple tabs. It allows users to scroll horizontally through the available options and select a specific tab. The component is designed to be flexible, allowing for customization of colors, styles, and rendering of individual tab items.
 
 ## Installation
 
+#### To use RNSwitchTabs in your React Native project, follow these steps:
+
+> Install the component using your preferred package manager:
+
 ```
-npm install rns-switch
+npm install rn-switch-tabs
+```
+
+### Import the component in your code:
+
+```
+import RNSwitchTabs from 'rn-switch-tabs';
 ```
 
 ## Usage
 
 ```
-import React from 'react';
-import { View } from 'react-native';
-import RNSwitch from 'rns-switch';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import RNSwitchTabs from 'rn-switch-tabs';
 
 const YourComponent = () => {
-  const options = [
-    { key: '1', value: 'Tab 1' },
-    { key: '2', value: 'Tab 2' },
-    // Add more tabs as needed
-  ];
-
-  const handleTabPress = (selectedTab) => {
-    // Your custom logic when a tab is pressed
-    console.log('Selected Tab:', selectedTab);
-  };
+  // ... your component logic
 
   return (
-    <View>
-      <RNSwitch
-        option={options}
-        onPress={handleTabPress}
-        selectedColor="#2E5894"
-        unSelectedColor="#0A1D56"
-        selectedTextColor="#fff"
-        unSelectedTextColor="#A9A9A9"
-      />
-      {/* Your other components or views */}
-    </View>
+    <RNSwitchTabs
+      options={YOUR_OPTIONS_ARRAY}
+      onPress={YOUR_ON_PRESS_HANDLER}
+      containerStyle={YOUR_CUSTOM_CONTAINER_STYLE}
+      selectedColor={YOUR_SELECTED_COLOR}
+      unSelectedColor={YOUR_UNSELECTED_COLOR}
+      renderItem={YOUR_RENDER_ITEM_FUNCTION}
+      textStyle={YOUR_CUSTOM_TEXT_STYLE}
+      selectedTextColor={YOUR_SELECTED_TEXT_COLOR}
+      unSelectedTextColor={YOUR_UNSELECTED_TEXT_COLOR}
+    />
   );
 };
 
@@ -52,42 +53,109 @@ export default YourComponent;
 
 ## Props
 
-- option (Array, required): An array of objects representing each tab. Each object should have a key and value property.
+- options: An array of objects representing the available tabs. Each object should have a key and a value
 
-- onPress (Function, required): Callback function invoked when a tab is pressed. It receives the selected tab as an argument.
+- onPress: A callback function invoked when a tab is pressed. It receives the selected tab item as a parameter.
 
-- selectedColor (String): Background color of the selected tab.
+- containerStyle: Custom styles for the tab container.
 
-- unSelectedColor (String): Background color of the unselected tabs.
+- selectedColor: Background color for the selected tab.
 
-- selectedTextColor (String): Text color of the selected tab.
+- unSelectedColor: Background color for unselected tabs.
 
-- unSelectedTextColor (String): Text color of the unselected tabs.
+- renderItem: A function that can be used to render custom content for each tab. Receives the current tab item as a parameter.
 
-- containerStyle (Object): Additional styles for the tab container.
+- textStyle: Custom styles for the text inside each tab.
 
-- textStyle (Object): Additional styles for the text inside each tab.
+- selectedTextColor: Text color for the selected tab.
 
-## Example
+- unSelectedTextColor: Text color for unselected tabs.
 
-> For a complete example, refer to the usage section above.
+### Styles
 
-### Styling
+#### The following styles are available for customization:
 
-#### Customize the appearance of the tabs by providing styles through the selectedColor, unSelectedColor, selectedTextColor, unSelectedTextColor, containerStyle, and textStyle props.
+- root: The main container of the component.
 
-```
-<RNSwitch
-  option={options}
-  onPress={handleTabPress}
-  selectedColor="#2E5894"
-  unSelectedColor="#0A1D56"
-  selectedTextColor="#fff"
-  unSelectedTextColor="#A9A9A9"
-  containerStyle={{ borderRadius: 10 }}
-  textStyle={{ fontSize: 18 }}
-/>
+- subRootContainer: Style for the internal ScrollView.
+
+- container: Style for each individual tab container.
+
+- textStyle: Style for the text inside each tab.
+
+## Example 1
 
 ```
+// YourComponent.js
+import React from 'react';
+import { View } from 'react-native';
+import RNSwitchTabs from 'rn-switch-tabs';
 
-#### Feel free to adjust the values according to your application's design.
+const YourComponent = () => {
+  const options = [
+    { key: '1', value: 'Tab 1' },
+    { key: '2', value: 'Tab 2' },
+    { key: '3', value: 'Tab 3' },
+  ];
+
+  const handlePress = (item) => {
+    console.log('Selected Tab:', item);
+  };
+
+  return (
+    <View>
+      <RNSwitchTabs
+        options={options}
+        onPress={handlePress}
+        selectedColor="#FF5733"
+        unSelectedColor="#3498db"
+      />
+    </View>
+  );
+};
+
+export default YourComponent;
+
+```
+
+## Example 2
+
+```
+// YourComponent.js
+import React from 'react';
+import { View } from 'react-native';
+import RNSwitchTabs from 'rn-switch-tabs';
+
+const YourComponent = () => {
+  const options = [
+    { key: '1', value: 'Tab 1' },
+    { key: '2', value: 'Tab 2' },
+    { key: '3', value: 'Tab 3' },
+  ];
+
+  const handlePress = (item) => {
+    console.log('Selected Tab:', item);
+  };
+
+  return (
+    <View>
+      <RNSwitchTabs
+        options={options}
+        onPress={handlePress}
+        selectedColor="#F3B95F"
+        unSelectedColor="#492E87"
+        renderItem={item => (
+          <View>
+            <Text style={{color: '#fff'}}>{item.value}</Text>
+          </View>
+        )}
+      />
+    </View>
+  );
+};
+
+export default YourComponent;
+
+```
+
+#### Feel free to update the documentation with more detailed information or examples based on your specific use cases.

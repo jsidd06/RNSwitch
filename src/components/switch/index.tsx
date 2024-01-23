@@ -1,7 +1,7 @@
 import {Pressable, ScrollView, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 
-const RNSwitch = props => {
+const RNSwitchTabs = props => {
   const [selectTab, setSelectedTab] = useState(0);
   const [selectedTextColor, setSelectedTextColor] = useState(0);
 
@@ -55,7 +55,7 @@ const RNSwitch = props => {
   );
 };
 
-export default RNSwitch;
+export default RNSwitchTabs;
 
 const styles = StyleSheet.create({
   root: {
